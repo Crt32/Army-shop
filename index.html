@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARMY SHOP | Vojaška oprema</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f0;
+            color: #222;
+        }
+
+        /* Glava spletne strani */
+        header {
+            background: #39452f;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .search {
+            width: 40%;
+            max-width: 500px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 5px;
+            background: #fff;
+            font-size: 14px;
+        }
+
+        .cart {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        /* Navigacija */
+        nav {
+            background: #283122;
+            padding: 15px 7%;
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #c4d19e;
+        }
+
+        /* Uvodni del */
+        .hero {
+            background: #8b976b;
+            padding: 55px 7%;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 22px;
+        }
+
+        .hero a {
+            display: inline-block;
+            background: #39452f;
+            color: white;
+            text-decoration: none;
+            padding: 13px 24px;
+            border-radius: 4px;
+        }
+
+        /* Kategorije */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 35px 7%;
+        }
+
+        .category {
+            background: #fff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #222;
+            font-weight: bold;
+        }
+
+        .category:hover {
+            background: #e7eadf;
+        }
+
+        /* Izdelki */
+        .catalog {
+            padding: 20px 7% 60px;
+        }
+
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .catalog-header h2 {
+            font-size: 25px;
+        }
+
+        .catalog-header a {
+            color: #39452f;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .product {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #e0e0da;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-4px);
+        }
+
+        .product img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+        .buy {
+            display: block;
+            text-align: center;
+            background: #39452f;
+            color: white;
+            text-decoration: none;
+            padding: 11px;
+            border-radius: 4px;
+        }
+
+        .buy:hover {
+            background: #536447;
+        }
+
+        /* Noga */
+        footer {
+            background: #283122;
+            color: white;
+            padding: 30px 7%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Prilagoditev za tablice in telefone */
+        @media (max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            header {
+                flex-wrap: wrap;
+            }
+
+            .search {
+                width: 100%;
+                max-width: none;
+                order: 3;
+            }
+        }
+
+        @media (max-width: 500px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            nav {
+                padding: 14px 5%;
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                padding: 35px 5%;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .categories {
+                padding: 22px 5%;
+                gap: 8px;
+            }
+
+            .category {
+                padding: 17px 5px;
+                font-size: 12px;
+            }
+
+            .catalog {
+                padding: 15px 5% 40px;
+            }
+
+            .catalog-header h2 {
+                font-size: 20px;
+            }
+
+            .products {
+                gap: 12px;
+            }
+
+            .product h3 {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">ARMY SHOP</div>
+
+        <input
+            class="search"
+            type="search"
+            id="search"
+            placeholder="Išči po artiklih..."
+        >
+
+        <a class="cart" href="#izdelki">
+            🛒 Košarica (<span id="cart-count">0</span>)
+        </a>
+    </header>
+
+    <nav>
+        <a href="#">Domov</a>
+        <a href="#kategorije">Kategorije</a>
+        <a href="#izdelki">Izdelki</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Oprema za prave avanturiste</h1>
+        <p>Kakovostna vojaška in taktična oprema za vsako pustolovščino.</p>
+        <a href="#izdelki">Oglej si izdelke</a>
+    </section>
+
+    <section class="categories" id="kategorije">
+        <a href="#izdelki" class="category">🎒 Torbe</a>
+        <a href="#izdelki" class="category">🥾 Oblačila in obutev</a>
+        <a href="#izdelki" class="category">🛡 Zaščitna oprema</a>
+    </section>
+
+    <main class="catalog" id="izdelki">
+        <div class="catalog-header">
+            <h2>Najbolj prodajani</h2>
+            <a href="#izdelki" id="show-all">Vsi artikli →</a>
+        </div>
+
+        <div class="products">
+
+            <article class="product">
+                <img
+                    src=""
+                    alt="Taktična torba"
+                >
+                <h3>Taktična torba 30L</h3>
+                <p class="price">39,00 €</p>
+                <a href="#kontakt" class="buy">Več informacij</a>
+            </article>
+
+            <article class="product">
+                <img
+                    src=""
+                    alt="Taktična jakna"
+                >
+                <h3>Taktična jakna</h3>
+                <p class="price">45,00 €</p>
+                <a href="#kontakt" class="buy">Več informacij</a>
+            </article>
+
+            <article class="product">
+                <img
+                    src=""
+                    alt="Obutev za teren"
+                >
+                <h3>Terenska obutev</h3>
+                <p class="price">120,00 €</p>
+                <a href="#kontakt" class="buy">Več informacij</a>
+            </article>
+
+            <article class="product">
+                <img
+                    src=""
+                    alt="Steklenica za vodo"
+                >
+                <h3>Steklenica 1L</h3>
+                <p class="price">15,00 €</p>
+                <a href="#kontakt" class="buy">Več informacij</a>
+            </article>
+
+        </div>
+    </main>
+
+    <footer id="kontakt">
+        <p><strong>ARMY SHOP</strong></p>
+        <p style="margin-top: 10px;">
+            Vojaška in taktična oprema
+        </p>
+        <p style="margin-top: 10px;">
+            Kontakt: info@armyshop.si
+        </p>
+        <p style="margin-top: 20px;">
+            © 2026 ARMY SHOP
+        </p>
+    </footer>
+
+    <script>
+        const search = document.getElementById("search");
+        const products = document.querySelectorAll(".product");
+
+        search.addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+
+            products.forEach(product => {
+                const name = product.querySelector("h3")
+                    .textContent.toLowerCase();
+
+                product.style.display =
+                    name.includes(query) ? "" : "none";
+            });
+        });
+
+        document.getElementById("show-all")
+            .addEventListener("click", function () {
+                search.value = "";
+
+                products.forEach(product => {
+                    product.style.display = "";
+                });
+            });
+    </script>
+
+</body>
+</html>
